@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Falar com a Brazika</title>
+    <meta name="description" content="Fale com a Brazika e receba ajuda para escolher seu look Brazilcore.">
+    <meta property="og:title" content="Falar com a Brazika">
+    <meta property="og:description" content="Atendimento Brazika para compra, rastreio e dúvidas.">
+    <meta property="og:image" content="https://linktr.ee/og/image/brazika.br.jpg">
+    <meta property="og:url" content="https://bio.brazika.com.br/fale/">
+    <style>
+      :root {
+        --green: #0b8f3d;
+        --yellow: #ffd84d;
+        --ink: #121212;
+        --white: #ffffff;
+        --line: rgba(18, 18, 18, 0.16);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background: var(--green);
+        color: var(--ink);
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      button,
+      input,
+      select,
+      textarea {
+        font: inherit;
+      }
+
+      .page {
+        margin: 0 auto;
+        max-width: 580px;
+        min-height: 100vh;
+        padding: 34px 16px 30px;
+      }
+
+      .back {
+        align-items: center;
+        color: var(--white);
+        display: inline-flex;
+        font-size: 14px;
+        font-weight: 900;
+        gap: 6px;
+        margin-bottom: 18px;
+      }
+
+      .profile {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .avatar {
+        background: var(--white);
+        border-radius: 50%;
+        height: 88px;
+        object-fit: cover;
+        width: 88px;
+      }
+
+      h1 {
+        color: var(--white);
+        font-size: 27px;
+        font-weight: 900;
+        line-height: 1.05;
+        margin: 16px 0 6px;
+      }
+
+      .bio {
+        color: rgba(255, 255, 255, 0.92);
+        font-size: 16px;
+        line-height: 1.45;
+        margin: 0 0 18px;
+      }
+
+      .lead-card,
+      .note-card {
+        background: var(--white);
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        box-shadow: 8px 8px 0 rgba(18, 18, 18, 0.42);
+      }
+
+      .lead-card {
+        padding: 18px;
+      }
+
+      .form-grid {
+        display: grid;
+        gap: 13px;
+      }
+
+      label {
+        display: block;
+        font-size: 12px;
+        font-weight: 900;
+        margin-bottom: 7px;
+        text-transform: uppercase;
+      }
+
+      .field {
+        background: #f5f5f5;
+        border: 2px solid transparent;
+        border-radius: 10px;
+        color: var(--ink);
+        display: block;
+        font-size: 15px;
+        font-weight: 800;
+        min-height: 52px;
+        padding: 0 13px;
+        width: 100%;
+      }
+
+      textarea.field {
+        line-height: 1.4;
+        min-height: 92px;
+        padding-top: 13px;
+        resize: vertical;
+      }
+
+      .field:focus {
+        border-color: var(--yellow);
+        outline: 0;
+      }
+
+      .button {
+        align-items: center;
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        cursor: pointer;
+        display: flex;
+        font-size: 15px;
+        font-weight: 900;
+        justify-content: center;
+        line-height: 1.2;
+        min-height: 56px;
+        padding: 14px 16px;
+        text-align: center;
+        transition: transform 160ms ease;
+        width: 100%;
+      }
+
+      .button:hover,
+      .back:hover {
+        transform: translateY(-1px);
+      }
+
+      .button-primary {
+        background: var(--yellow);
+        color: var(--ink);
+        margin-top: 2px;
+      }
+
+      .button-secondary {
+        background: var(--ink);
+        color: var(--white);
+        margin-top: 12px;
+      }
+
+      .status {
+        color: rgba(18, 18, 18, 0.72);
+        display: none;
+        font-size: 13px;
+        font-weight: 800;
+        line-height: 1.4;
+        margin: 12px 0 0;
+      }
+
+      .status.is-visible {
+        display: block;
+      }
+
+      .status.error {
+        color: #b00020;
+      }
+
+      .note-card {
+        margin-top: 18px;
+        padding: 16px;
+      }
+
+      .note-title {
+        display: block;
+        font-size: 15px;
+        font-weight: 900;
+        line-height: 1.25;
+        margin-bottom: 6px;
+      }
+
+      .note-text {
+        color: rgba(18, 18, 18, 0.7);
+        font-size: 13px;
+        line-height: 1.45;
+        margin: 0;
+      }
+
+      .tiny {
+        color: rgba(255, 255, 255, 0.82);
+        font-size: 12px;
+        margin: 34px 0 24px;
+        text-align: center;
+      }
+
+      @media (max-width: 430px) {
+        .page {
+          padding-top: 24px;
+        }
+
+        h1 {
+          font-size: 24px;
+        }
+
+        .lead-card {
+          padding: 16px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <a class="back" href="/?utm_source=fale_brazika&utm_medium=internal&utm_campaign=lead_page&utm_content=voltar_bio">‹ voltar para a bio</a>
+
+      <section class="profile" aria-label="Atendimento Brazika">
+        <img class="avatar" src="https://ugc.production.linktr.ee/2b9e49c9-4246-4664-ab57-2c56eac183c6_650174178-18057278846444585-8289305160618070861-n.jpeg?io=true&size=avatar-v3_0" alt="Logo Brazika">
+        <h1>Falar com a Brazika</h1>
+        <p class="bio">deixa seus dados aqui<br>a gente te chama no WhatsApp</p>
+      </section>
+
+      <section class="lead-card" aria-label="Formulario de atendimento">
+        <form id="lead-form">
+          <div class="form-grid">
+            <div>
+              <label for="name">Nome</label>
+              <input class="field" id="name" name="nome" type="text" autocomplete="name" placeholder="Seu nome" required>
+            </div>
+
+            <div>
+              <label for="whatsapp">WhatsApp</label>
+              <input class="field" id="whatsapp" name="whatsapp" type="tel" inputmode="tel" autocomplete="tel" placeholder="(35) 98472-6991" required>
+            </div>
+
+            <div>
+              <label for="interest">Qual voce gostou mais?</label>
+              <select class="field" id="interest" name="produto_favorito" required>
+                <option value="">Escolha uma opcao</option>
+                <option>Regata Tricot Brasil</option>
+                <option>Blusa Tricot Brasil Canarinho</option>
+                <option>Regata Tricot Brasil Azul</option>
+                <option>Blusa Tricot Brasil</option>
+                <option>Ainda estou escolhendo</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="reason">Como podemos ajudar?</label>
+              <select class="field" id="reason" name="motivo" required>
+                <option value="">Escolha uma opcao</option>
+                <option>Quero comprar</option>
+                <option>Tenho duvida de tamanho</option>
+                <option>Quero rastrear meu pedido</option>
+                <option>Quero trocar ou resolver um pedido</option>
+                <option>Outro assunto</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="message">Mensagem</label>
+              <textarea class="field" id="message" name="mensagem" placeholder="Ex: gostei da regata amarela, quero saber qual tamanho pegar"></textarea>
+            </div>
+
+            <button class="button button-primary" type="submit">Enviar e falar com a Brazika</button>
+          </div>
+
+          <p class="status" id="form-status"></p>
+        </form>
+
+        <a class="button button-secondary" href="https://www.brazika.com.br/?utm_source=bio_brazika&utm_medium=link&utm_campaign=lead_page&utm_content=site_oficial">Ver site oficial</a>
+      </section>
+
+      <section class="note-card" aria-label="Atendimento">
+        <span class="note-title">Atendimento Brazika</span>
+        <p class="note-text">As respostas ajudam a entender seu pedido antes do WhatsApp. Assim o atendimento fica mais rapido e direto.</p>
+      </section>
+
+      <p class="tiny">Brazika © Brazilcore 2026</p>
+    </main>
+
+    <script>
+      const GOOGLE_SCRIPT_URL = "";
+      const BRAZIKA_WHATSAPP = "5535984726991";
+      const form = document.querySelector("#lead-form");
+      const statusEl = document.querySelector("#form-status");
+      const params = new URLSearchParams(window.location.search);
+
+      if (params.get("motivo") === "sem_codigo") {
+        document.querySelector("#reason").value = "Quero rastrear meu pedido";
+        document.querySelector("#message").value = "Nao tenho meu codigo de rastreio. Pode me ajudar?";
+      }
+
+      function getPayload() {
+        const data = new FormData(form);
+        return {
+          data: new Date().toISOString(),
+          origem: "bio.brazika.com.br/fale",
+          utm_source: params.get("utm_source") || "",
+          utm_medium: params.get("utm_medium") || "",
+          utm_campaign: params.get("utm_campaign") || "",
+          utm_content: params.get("utm_content") || "",
+          nome: data.get("nome").trim(),
+          whatsapp: data.get("whatsapp").trim(),
+          produto_favorito: data.get("produto_favorito"),
+          motivo: data.get("motivo"),
+          mensagem: data.get("mensagem").trim()
+        };
+      }
+
+      function setStatus(message, isError = false) {
+        statusEl.textContent = message;
+        statusEl.classList.toggle("error", isError);
+        statusEl.classList.add("is-visible");
+      }
+
+      function openWhatsApp(payload) {
+        const text = [
+          "Oi, Brazika! Acabei de preencher o atendimento pela bio.",
+          "",
+          `Nome: ${payload.nome}`,
+          `WhatsApp: ${payload.whatsapp}`,
+          `Produto: ${payload.produto_favorito}`,
+          `Motivo: ${payload.motivo}`,
+          payload.mensagem ? `Mensagem: ${payload.mensagem}` : ""
+        ].filter(Boolean).join("\n");
+
+        const url = new URL(`https://wa.me/${BRAZIKA_WHATSAPP}`);
+        url.searchParams.set("text", text);
+        url.searchParams.set("utm_source", "bio_brazika");
+        url.searchParams.set("utm_medium", "whatsapp");
+        url.searchParams.set("utm_campaign", "lead_page");
+        url.searchParams.set("utm_content", "lead_submit");
+        window.location.href = url.toString();
+      }
+
+      form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        const payload = getPayload();
+
+        if (!payload.nome || !payload.whatsapp || !payload.produto_favorito || !payload.motivo) {
+          setStatus("Preencha nome, WhatsApp, produto e motivo para continuar.", true);
+          return;
+        }
+
+        setStatus("Enviando seus dados...");
+
+        if (GOOGLE_SCRIPT_URL) {
+          try {
+            await fetch(GOOGLE_SCRIPT_URL, {
+              method: "POST",
+              mode: "no-cors",
+              headers: {
+                "Content-Type": "application/json"
+              },
+              body: JSON.stringify(payload)
+            });
+          } catch (error) {
+            setStatus("Nao consegui salvar agora, mas vou abrir o WhatsApp com seus dados.", true);
+          }
+        }
+
+        openWhatsApp(payload);
+      });
+    </script>
+  </body>
+</html>
